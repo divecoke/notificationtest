@@ -17,7 +17,7 @@ class CreateGroupsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('group_code');
-            $table->string('qr-code');
+            $table->string('qr_code');
             $table->timestamps();
         });
     }
