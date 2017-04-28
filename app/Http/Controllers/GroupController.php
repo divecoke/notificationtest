@@ -17,6 +17,7 @@ class GroupController extends Controller
         $group->qr_code = $request->_qr_code;
         $group->save();
         return response()->json($group, 200);
+        
     }
 
     public function update(Request $request)
