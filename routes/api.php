@@ -25,4 +25,5 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('single/{id}', ['uses' => 'UserController@single']);
         Route::delete('destroy', ['uses' => 'UserController@destroy']);
     });
+    //1 eilute
 });
