@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class RolesController extends Controller
 {
-    public function get()
+    public function all()
     {
         $roles = Role::all();
         return response()->json($roles, 200);

@@ -25,5 +25,21 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('single/{id}', ['uses' => 'UserController@single']);
         Route::delete('destroy', ['uses' => 'UserController@destroy']);
     });
-    //Antra elutes
+    Route::group(['prefix' => 'group'], function () {
+        Route::post('add', ['uses' => 'GroupController@add']);
+        Route::put('update', ['uses' => 'GroupController@update']);
+        Route::get('all', ['uses' => 'GroupController@all']);
+        Route::get('single/{id}', ['uses' => 'GroupController@single']);
+        Route::delete('destroy', ['uses' => 'GroupController@destroy']);
+    });
+    Route::group(['prefix' => 'notification'], function () {
+        Route::post('add', ['uses' => 'NotificationController@add']);
+        Route::put('update', ['uses' => 'NotificationController@update']);
+        Route::get('get_to_group', ['uses' => 'NotificationController@get_from_groups']);
+        Route::get('single/{id}', ['uses' => 'NotificationController@single']);
+        Route::delete('destroy', ['uses' => 'NotificationController@destroy']);
+    });
+    Route::group(['prefix' => 'role'], function () {
+        Route::get('all', ['uses' => 'RolesController@all']);
+    });
 });
