@@ -13,12 +13,29 @@ class UserController extends Controller
      */
     public function add(Request $request)
     {
+
         $user = new User();
-        $user->name = $request->name;
+
+        if ($request->name != null) {
+            $user->name = $request->name;
+        } else {
+            $user->name = '';
+        }
+
         $user->OS = $request->OS;
-        $user->remember_token = $request->remember_token;
+        $user->remember_token = '';
         $user->save();
         return response()->json($user, 200);
+
+    }
+
+    public function ifUserExists(Request $request)
+    {
+        if (User::where('OS', $request->OS)->count() > 0) {
+            return response()->json(true, 200);
+        } else {
+            return response()->json(false, 200);
+        }
     }
 
     public function update(Request $request)
@@ -30,6 +47,7 @@ class UserController extends Controller
 
         return response()->json($user, 200);
     }
+
     public function all()
     {
         $users = User::all();
@@ -41,7 +59,9 @@ class UserController extends Controller
         $user = User::find($id);
         return response()->json($user, 200);
     }
-    public function destroy(Request $request) {
+
+    public function destroy(Request $request)
+    {
         $user = User::find($request->id);
         $user->delete();
         return response()->json('Deleted', 200);
