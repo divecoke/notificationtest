@@ -14,10 +14,10 @@ class NotificationController extends Controller
         $notification->text = $request->_text;
         $notification->group_id = $request->_group_id;
         //dd($request->_end_at);
-        $time = strtotime($request->_end_at);
-        $newformat = date('Y-m-d H:m:s', $time);
+        //$time = strtotime($request->_end_at);
+        //$newformat = date('Y-m-d H:m:s', $time);
         //dd($newformat);
-        $notification->end_at = $newformat;
+        $notification->end_at = '2017-12-15 22:04:42';
 
         $notification->save();
 
@@ -30,7 +30,7 @@ class NotificationController extends Controller
         $notification->title = $request->title;
         $notification->text = $request->text;
         $notification->group_id = $request->group_id;
-        $notification->end_date = $request->end_date;
+        $notification->end_at = '2017-12-15 22:04:42';
 
         $notification->save();
 
